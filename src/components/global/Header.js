@@ -60,13 +60,13 @@ export const Header = () => {
 								{submenu ? (
 									<ul className={s['menu_links-submenu']}>
 										<li>
-											<Link href={'/'}>Renderización</Link>
+											<Link href={'/renderizacion'}>Renderización</Link>
 										</li>
 										<li>
-											<Link href={'/'}>Recorridos</Link>
+											<Link href={'/recorridos'}>Recorridos</Link>
 										</li>
 										<li>
-											<Link href={'/'}>Modelado 3D</Link>
+											<Link href={'/modelado'}>Modelado 3D</Link>
 										</li>
 									</ul>
 								) : null}

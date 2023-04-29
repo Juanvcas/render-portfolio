@@ -1,64 +1,18 @@
+import { useEffect, useState } from 'react';
+import { endpoints } from '@/services/api/endpoints';
+import { useFetch } from '@/hooks/useFetch';
 import Head from 'next/head';
 import Link from 'next/link';
-import s from '@/styles/pages/Home.module.css';
 import { MainBanner } from '@/components/MainBanner';
 import { SolutionSlide } from '@/components/SolutionSlide';
 import { ProjectSlide } from '@/components/ProjectSlide';
 import { LinkButton } from '@/components/global/Buttons';
 import { ContactBanner } from '@/components/global/ContactBanner';
-
-const projects = [
-	{
-		link: '/',
-		title: 'SAN JERÓNIMO',
-		image: {
-			src: 'https://i.postimg.cc/JhgGQqNS/Enscape-2020-07-09-17-57-41.jpg',
-			alt: 'Imagen de casa de campo desde el patio trasero con piscina',
-		},
-	},
-	{
-		link: '/',
-		title: 'SAN JERÓNIMO',
-		image: {
-			src: 'https://i.postimg.cc/JhgGQqNS/Enscape-2020-07-09-17-57-41.jpg',
-			alt: 'Imagen de casa de campo desde el patio trasero con piscina',
-		},
-	},
-	{
-		link: '/',
-		title: 'SAN JERÓNIMO',
-		image: {
-			src: 'https://i.postimg.cc/JhgGQqNS/Enscape-2020-07-09-17-57-41.jpg',
-			alt: 'Imagen de casa de campo desde el patio trasero con piscina',
-		},
-	},
-	{
-		link: '/',
-		title: 'SAN JERÓNIMO',
-		image: {
-			src: 'https://i.postimg.cc/JhgGQqNS/Enscape-2020-07-09-17-57-41.jpg',
-			alt: 'Imagen de casa de campo desde el patio trasero con piscina',
-		},
-	},
-	{
-		link: '/',
-		title: 'SAN JERÓNIMO',
-		image: {
-			src: 'https://i.postimg.cc/JhgGQqNS/Enscape-2020-07-09-17-57-41.jpg',
-			alt: 'Imagen de casa de campo desde el patio trasero con piscina',
-		},
-	},
-	{
-		link: '/',
-		title: 'SAN JERÓNIMO',
-		image: {
-			src: 'https://i.postimg.cc/JhgGQqNS/Enscape-2020-07-09-17-57-41.jpg',
-			alt: 'Imagen de casa de campo desde el patio trasero con piscina',
-		},
-	},
-];
+import s from '@/styles/pages/Home.module.css';
 
 export default function Home() {
+	const [projects, setProjects] = useState([]);
+	useFetch(endpoints.projects.getAllProjects, setProjects);
 	return (
 		<>
 			<Head>
@@ -85,7 +39,7 @@ export default function Home() {
 					</div>
 					<div className={s.solutions_slides}>
 						<SolutionSlide
-							link={'/'}
+							link={'/renderizacion'}
 							title={'RENDERIZACIÓN'}
 							text={'Imágenes de alta calidad con alta carga visual'}
 							image={{
@@ -94,7 +48,7 @@ export default function Home() {
 							}}
 						/>
 						<SolutionSlide
-							link={'/'}
+							link={'/recorridos'}
 							title={'RECORRIDOS'}
 							text={'Videos promocionales del proyecto y diseño mobiliario'}
 							image={{
@@ -103,7 +57,7 @@ export default function Home() {
 							}}
 						/>
 						<SolutionSlide
-							link={'/'}
+							link={'/modelado'}
 							title={'MODELADO 3D'}
 							text={
 								'Modelado completo del proyecto y diseño mobiliario en multiples herramientas'
@@ -121,17 +75,19 @@ export default function Home() {
 						<h3>Soluciones completadas que satisficieron al cliente</h3>
 					</div>
 					<div className={s.projects_list}>
-						{projects.map((project, index) => (
-							<ProjectSlide
-								key={index}
-								link={project.link}
-								title={project.title}
-								image={{
-									src: project.image.src,
-									alt: project.image.alt,
-								}}
-							/>
-						))}
+						{projects.length
+							? projects?.map((project) => (
+									<ProjectSlide
+										key={project.id}
+										link={'/proyectos'}
+										title={project.title}
+										image={{
+											src: project.images[0].src,
+											alt: project.images[0].alt,
+										}}
+									/>
+							  ))
+							: null}
 					</div>
 					<LinkButton
 						href={'/'}
