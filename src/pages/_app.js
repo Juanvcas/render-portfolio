@@ -1,5 +1,10 @@
-import '@/styles/globals.css'
+import '@/styles/globals.css';
+import { MainTemplate } from '@/templates/MainTemplate';
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+	return (
+		<MainTemplate>
+			<Component {...pageProps} />
+		</MainTemplate>
+	);
 }

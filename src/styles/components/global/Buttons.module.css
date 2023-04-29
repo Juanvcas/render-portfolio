@@ -1,0 +1,14 @@
+.LinkButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 32rem;
+	height: 4rem;
+	margin: 0 auto;
+	margin-top: var(--margin);
+	color: var(--main-color);
+	font-size: var(--font-text);
+	text-decoration: none;
+	border: solid 0.2rem var(--main-color);
+}

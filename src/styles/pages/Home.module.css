@@ -1,0 +1,64 @@
+.main {
+	width: var(--main-width);
+	max-width: var(--max-width);
+	margin: 0 auto;
+}
+
+.main_banner {
+	width: 100%;
+	height: auto;
+}
+
+.main_banner img {
+	object-position: left;
+}
+
+.main_solutions {
+	width: 100%;
+	height: auto;
+	margin-top: var(--margin);
+}
+
+.solutions_text {
+	width: 100%;
+	height: auto;
+	padding: 0 5%;
+}
+
+.solutions_text h3 {
+	font-size: var(--font-text);
+	font-weight: 400;
+}
+
+.solutions_slides {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	gap: 1rem;
+	margin-top: var(--margin);
+}
+
+.main_projects {
+	width: 100%;
+	height: auto;
+	margin-top: var(--margin);
+}
+
+.projects_text {
+	width: 100%;
+	height: auto;
+	padding: 0 5%;
+}
+
+.projects_text h3 {
+	font-size: var(--font-text);
+	font-weight: 400;
+}
+
+.projects_list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: auto;
+	gap: 1rem;
+	margin-top: var(--margin);
+}

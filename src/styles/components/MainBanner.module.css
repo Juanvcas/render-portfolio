@@ -1,0 +1,36 @@
+.main {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	height: 24rem;
+}
+
+.main h1 {
+	width: 80%;
+	padding-left: var(--padding);
+	font-size: var(--font-h1);
+	line-height: var(--font-h1);
+}
+
+.main h2 {
+	width: 80%;
+	padding-left: var(--padding);
+	font-family: var(--font-sec);
+	font-size: var(--font-text);
+	font-weight: 400;
+	font-style: italic;
+}
+
+.image {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+.image img {
+	filter: brightness(0.7);
+}
