@@ -109,7 +109,7 @@ export default function Rendering() {
 							? projects?.slice(0, 2).map((project) => (
 									<ProjectSlide
 										key={project.id}
-										link={`/projects/${project.id}`}
+										link={`/proyectos/${project.id}`}
 										title={project.title}
 										image={{
 											src: project.images[0].src,

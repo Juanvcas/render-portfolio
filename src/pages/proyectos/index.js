@@ -1,8 +1,14 @@
 import Head from 'next/head';
+import { useState } from 'react';
+import { useFetch } from '@/hooks/useFetch';
+import { endpoints } from '@/services/api/endpoints';
 import { MainBanner } from '@/components/MainBanner';
+import { ProjectSlide } from '@/components/ProjectSlide';
 import s from '@/styles/pages/Projects.module.css';
 
 export default function Projects() {
+	const [projects, setProjects] = useState([]);
+	useFetch(endpoints.projects.getAllProjects, setProjects);
 	return (
 		<>
 			<Head>
@@ -20,7 +26,7 @@ export default function Projects() {
 					/>
 				</section>
 				<section className={s.main_filters}>
-					<form id='filters'>
+					<form id='filters' className={s.filters_select}>
 						<label>
 							<span>Categoría:</span>
 							<select name='category' id='category'>
@@ -34,12 +40,28 @@ export default function Projects() {
 							</select>
 						</label>
 					</form>
-					<form id='find'>
+					<form id='find' className={s.filters_search}>
 						<label>
-							<input type={'search'} id='search' />
+							<input type={'search'} id='search' placeholder={'Buscar...'} />
 						</label>
 					</form>
 				</section>
+				<section className={s.main_projects}>
+					{projects.length
+						? projects?.map((project) => (
+								<ProjectSlide
+									key={project.id}
+									link={`/proyectos/${project.id}`}
+									title={project.title}
+									image={{
+										src: project.images[0].src,
+										alt: project.images[0].alt,
+									}}
+								/>
+						  ))
+						: null}
+				</section>
+				<span className='separator'></span>
 			</main>
 		</>
 	);

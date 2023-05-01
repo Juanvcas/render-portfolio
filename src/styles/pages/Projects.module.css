@@ -8,3 +8,63 @@
 	width: 100%;
 	height: auto;
 }
+
+.main_filters {
+	width: 100%;
+	height: auto;
+	margin: var(--margin) 0;
+	padding: 0 var(--padding);
+}
+
+.filters_select {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: auto;
+	gap: var(--gap);
+	width: 100%;
+	height: auto;
+}
+
+.filters_select label {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.filters_select select {
+	width: 100%;
+	height: 4rem;
+	margin-top: 1rem;
+	padding: 0 var(--padding);
+	color: var(--main-color);
+	font-size: var(--font-text);
+	background: none;
+	border: solid 0.1rem var(--main-color);
+}
+
+.filters_search,
+.filters_search label {
+	width: 100%;
+	height: auto;
+	margin-top: 1rem;
+}
+
+.filters_search input {
+	width: 100%;
+	height: 4rem;
+	padding: 0 var(--padding);
+	color: var(--main-color);
+	font-size: var(--font-text);
+	background-color: var(--background-hover);
+	border: none;
+}
+
+.main_projects {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: auto;
+	gap: var(--gap);
+	width: 100%;
+	height: auto;
+}

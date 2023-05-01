@@ -72,10 +72,10 @@ export const Header = () => {
 								) : null}
 							</li>
 							<li>
-								<Link href={'/'}>Proyectos</Link>
+								<Link href={'/proyectos'}>Proyectos</Link>
 							</li>
 							<li>
-								<Link href={'/'}>Contacto</Link>
+								<Link href={'/contacto'}>Contacto</Link>
 							</li>
 						</ul>
 					) : null}

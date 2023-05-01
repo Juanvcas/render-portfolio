@@ -7,7 +7,6 @@ export default async function Projects(req, res) {
 		const projects = await service.find();
 		if (projects) {
 			await res.status(200).json(projects);
-			console.log(projects);
 		} else {
 			await res.status(404).json({ message: 'Projects not found' });
 		}

@@ -10,9 +10,9 @@ export class ProjectsService {
 	}
 
 	async findOne(id) {
-		const project = this.projects.find((item) => item.id === id);
+		const project = this.projects.filter((item) => item.id === id);
 
-		if (project !== -1) {
+		if (project !== 0) {
 			return project;
 		} else {
 			return false;

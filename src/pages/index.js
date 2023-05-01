@@ -76,10 +76,10 @@ export default function Home() {
 					</div>
 					<div className={s.projects_list}>
 						{projects.length
-							? projects?.map((project) => (
+							? projects.slice(0, 5).map((project) => (
 									<ProjectSlide
 										key={project.id}
-										link={'/proyectos'}
+										link={`/proyectos/${project.id}`}
 										title={project.title}
 										image={{
 											src: project.images[0].src,
@@ -90,7 +90,7 @@ export default function Home() {
 							: null}
 					</div>
 					<LinkButton
-						href={'/'}
+						href={'/proyectos'}
 						text={'Ver Todos'}
 						style={s['projects-link']}
 					/>

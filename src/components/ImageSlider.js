@@ -1,70 +1,70 @@
-import { useState } from 'react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
+import s from '@/styles/components/ImageSlider.module.css';
 
-import styles from '@/styles/components/ImageSlider.module.css';
-
-const ImageSlider = ({ images }) => {
-	const [activeIndex, setActiveIndex] = useState(0);
-	const [translateX, setTranslateX] = useState(0);
+export const ImageSlider = ({ images }) => {
+	const [currentImage, setCurrentImage] = useState(0);
 
 	const nextSlide = () => {
-		if (activeIndex === images.length - 1) {
-			setActiveIndex(0);
-			setTranslateX(0);
+		const newIndex = currentImage + 1;
+		if (newIndex === images.length) {
+			setCurrentImage(0);
 		} else {
-			setActiveIndex(activeIndex + 1);
-			setTranslateX(translateX - slideWidth());
+			setCurrentImage(newIndex);
 		}
 	};
 
 	const prevSlide = () => {
-		if (activeIndex === 0) {
-			setActiveIndex(images.length - 1);
-			setTranslateX(-slideWidth() * (images.length - 1));
+		const newIndex = currentImage - 1;
+		if (newIndex < 0) {
+			setCurrentImage(images.length - 1);
 		} else {
-			setActiveIndex(activeIndex - 1);
-			setTranslateX(translateX + slideWidth());
+			setCurrentImage(newIndex);
 		}
 	};
 
-	const slideWidth = () => {
-		return document.querySelector(`.${styles.slide}`).clientWidth;
-	};
-
 	return (
-		<div className={styles.slider}>
-			<div
-				className={styles.sliderWrapper}
-				style={{
-					transform: `translateX(${translateX}px)`,
-					transition: 'transform ease-out 0.45s',
-				}}
-			>
+		<div className={s.main}>
+			<div className={s['main-cont']}>
 				{images.map((image, index) => (
-					<div key={index} className={styles.slide}>
-						<img src={image} alt={`Slide ${index + 1}`} />
-					</div>
-				))}
-			</div>
-
-			<button className={styles.buttonPrev} onClick={prevSlide}>
-				Prev
-			</button>
-			<button className={styles.buttonNext} onClick={nextSlide}>
-				Next
-			</button>
-
-			<div className={styles.dots}>
-				{images.map((_, index) => (
-					<div
+					<Image
 						key={index}
-						className={`${styles.dot} ${
-							index === activeIndex && styles.activeDot
-						}`}
+						src={image.src}
+						alt={image.alt}
+						className={
+							index === currentImage
+								? `${s.main_slide} ${s['active-slide']}`
+								: s.main_slide
+						}
+						width={1280}
+						height={1280}
 					/>
 				))}
+				{images.length > 1 ? (
+					<>
+						<button className={s['main_btn-prev']} onClick={prevSlide}>
+							<MdArrowBackIos />
+						</button>
+						<button className={s['main_btn-next']} onClick={nextSlide}>
+							<MdArrowForwardIos />
+						</button>
+						<ul className={s.main_dots}>
+							{images.map((sld, index) => (
+								<li
+									key={index}
+									className={
+										index === currentImage
+											? `${s.dot} ${s['dot-active']}`
+											: s.dot
+									}
+									onClick={() => setCurrentImage(index)}
+								></li>
+							))}
+						</ul>
+					</>
+				) : null}
 			</div>
 		</div>
 	);
 };
-
-export default ImageSlider;

@@ -21,10 +21,10 @@ export const Footer = () => {
 							<Link href={'/modelado'}>Modelado 3D</Link>
 						</li>
 						<li>
-							<Link href={'/'}>Proyectos</Link>
+							<Link href={'/proyectos'}>Proyectos</Link>
 						</li>
 						<li>
-							<Link href={'/'}>Contacto</Link>
+							<Link href={'/contacto'}>Contacto</Link>
 						</li>
 					</ul>
 				</menu>
