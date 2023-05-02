@@ -1,6 +1,8 @@
 import Head from 'next/head';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useFetch } from '@/hooks/useFetch';
+import { useSearch } from '@/hooks/useSearch';
+import { useFilter } from '@/hooks/useFilter';
 import { endpoints } from '@/services/api/endpoints';
 import { MainBanner } from '@/components/MainBanner';
 import { ProjectSlide } from '@/components/ProjectSlide';
@@ -8,7 +10,56 @@ import s from '@/styles/pages/Projects.module.css';
 
 export default function Projects() {
 	const [projects, setProjects] = useState([]);
+	const [back, setBack] = useState([]);
+
+	const [categories, setCategories] = useState([]);
+	const [types, setTypes] = useState([]);
+
 	useFetch(endpoints.projects.getAllProjects, setProjects);
+	useFetch(endpoints.categories.getAllCategories, setCategories);
+	useFetch(endpoints.types.getAllTypes, setTypes);
+
+	const [category, setCategory] = useState();
+	const [type, setType] = useState();
+	const categoryInput = useRef();
+	const typeInput = useRef();
+
+	useFilter(
+		endpoints.projects.filterProject(JSON.stringify({ category, type })),
+		setProjects,
+		category,
+		type,
+		back
+	);
+
+	const filter = () => {
+		setCategory(categoryInput.current.value);
+		setType(typeInput.current.value);
+	};
+
+	const clear = () => {
+		const cat = document.querySelector('#categoryInput');
+		const tp = document.querySelector('#typeInput');
+		const fd = document.querySelector('#search');
+		cat.value = 'false';
+		tp.value = 'false';
+		fd.value = '';
+		setTimeout(() => setProjects(back), 100);
+	};
+
+	const [query, setQuery] = useState();
+	const queryInput = useRef();
+
+	useSearch(endpoints.projects.searchProject(query), setProjects, query);
+
+	const search = () => {
+		setQuery(queryInput.current.value);
+	};
+
+	useEffect(() => {
+		setBack(projects);
+	}, []);
+
 	return (
 		<>
 			<Head>
@@ -29,37 +80,72 @@ export default function Projects() {
 					<form id='filters' className={s.filters_select}>
 						<label>
 							<span>Categoría:</span>
-							<select name='category' id='category'>
-								<option value={'abc'}>abc</option>
+							<select
+								ref={categoryInput}
+								name='categoryInput'
+								id='categoryInput'
+								onChange={filter}
+							>
+								<option value={false}>Categoría...</option>
+								{categories.length
+									? categories.map((cat) => (
+											<option key={cat.id} value={cat.title}>
+												{cat.title}
+											</option>
+									  ))
+									: null}
 							</select>
 						</label>
 						<label>
 							<span>Tipo:</span>
-							<select name='type' id='type'>
-								<option value={'abc'}>abc</option>
+							<select
+								ref={typeInput}
+								name='typeInput'
+								id='typeInput'
+								onChange={filter}
+							>
+								<option value={false}>Tipo...</option>
+								{types.length
+									? types.map((tp) => (
+											<option key={tp.id} value={tp.title}>
+												{tp.title}
+											</option>
+									  ))
+									: null}
 							</select>
 						</label>
 					</form>
 					<form id='find' className={s.filters_search}>
 						<label>
-							<input type={'search'} id='search' placeholder={'Buscar...'} />
+							<input
+								ref={queryInput}
+								type={'search'}
+								id='search'
+								placeholder={'Buscar...'}
+								onChange={search}
+							/>
 						</label>
 					</form>
+					<button className={s.filters_clear} onClick={clear}>
+						Limpiar
+					</button>
 				</section>
 				<section className={s.main_projects}>
-					{projects.length
-						? projects?.map((project) => (
-								<ProjectSlide
-									key={project.id}
-									link={`/proyectos/${project.id}`}
-									title={project.title}
-									image={{
-										src: project.images[0].src,
-										alt: project.images[0].alt,
-									}}
-								/>
-						  ))
-						: null}
+					{projects.length ? (
+						projects?.map((project) => (
+							<ProjectSlide
+								key={project.id}
+								link={`/proyectos/${project.id}`}
+								title={project.title}
+								image={{
+									src: project.images[0].src,
+									alt: project.images[0].alt,
+								}}
+							/>
+						))
+					) : (
+						<p>Mmm... Al parecer no hay elementos que mostrar</p>
+					)}
 				</section>
 				<span className='separator'></span>
 			</main>

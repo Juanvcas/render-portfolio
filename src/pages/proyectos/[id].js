@@ -55,19 +55,19 @@ export default function Project() {
 										<source src={vid.src} type={vid.type} />;
 									})}
 								</video> */}
-								{/* <iframe
+								<iframe
 									src={project.video[0].src}
 									width='100%'
 									height='auto'
-								></iframe> */}
-								<iframe
+								></iframe>
+								{/* <iframe
 									src={project.video[0].src}
 									width='100%'
 									height='auto'
 									frameBorder='0'
 									scrolling='no'
 									allowFullScreen
-								></iframe>
+								></iframe> */}
 							</div>
 						</section>
 					</>

@@ -4,14 +4,14 @@ export const categories = [
 		title: 'Renderización',
 		description:
 			'Renderización de imágenes de alta resolución con carga visual variable de arquitectura, mobiliario, arte, entre otros.',
-		tags: ['render', 'renderizacion', 'imagen', 'imágenes'],
+		tags: ['render', 'renderización', 'imagen', 'imágenes'],
 	},
 	{
 		id: 2,
 		title: 'Recorridos',
 		description:
 			'Renderización de videos e imágenes 360 en diferentes formatos para arquitectura, mobiliario, arte, entre otros.',
-		tags: ['video', 'videos', 'imágenes 360'],
+		tags: ['video', 'videos', 'imágenes 360', 'recorrido 360'],
 	},
 	{
 		id: 3,

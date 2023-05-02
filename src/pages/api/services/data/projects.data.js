@@ -7,11 +7,11 @@ export const projects = [
 		id: 'san-jeronimo',
 		type: types[0],
 		categories: [categories[0]],
-		tags: ['casa', 'casas', 'casa de campo', 'casa campestre', 'piscina'],
 		technologies: {
 			model: [technologies[1], technologies[2]],
 			render: [engines[1]],
 		},
+		tags: ['casa', 'casas', 'casa de campo', 'casa campestre', 'piscina'],
 		title: 'San Jerónimo',
 		subtitle: 'Proyecto de Arquitectura',
 		text: 'Hermosa casa campestre de dos niveles con diseño moderno, colores blancos y negros en un diseño minimalista y elegante, areas abiertas y grandes ventanales hacen que la luz sea el protagonista en toda la casa. \nSu diseño abierto permite tener un bonito jardín interno que llena de vida la casa, ademas cuenta con un gran patio trasero, piscina y barra desde la cocina.',
@@ -58,11 +58,11 @@ export const projects = [
 		id: 'daniel-santiago',
 		type: types[0],
 		categories: [categories[0], categories[1]],
-		tags: ['casa', 'casas', 'casa de campo', 'casa campestre', 'piscina'],
 		technologies: {
 			model: [technologies[1], technologies[2]],
 			render: [engines[1]],
 		},
+		tags: ['casa', 'casas', 'casa de campo', 'casa campestre', 'piscina'],
 		title: 'Daniel Santiago',
 		subtitle: 'Proyecto de Arquitectura',
 		text: 'Espaciosa casa campestre de un nivel estilo industrial, con grandes salones y espacios comunes donde la luz es la protagonista. Su estilo industrial en concreto pulido y toques negros hacen que la vegetación resalte sobre lo demás y permitiendo un diseño de mobiliario moderno y sofisticado.',
@@ -114,7 +114,7 @@ export const projects = [
 		],
 		video: [
 			{
-				src: 'https://onedrive.live.com/embed?cid=AC8EA0940C92480B&resid=AC8EA0940C92480B%21250762&authkey=ADODH5SWE7pGdNc',
+				src: 'https://drive.google.com/file/d/1YxhRQLnZHmHicRAjleukd8FZFawz6ufP/preview',
 				type: 'video/mp4',
 			},
 		],

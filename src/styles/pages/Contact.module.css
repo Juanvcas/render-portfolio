@@ -1,0 +1,85 @@
+.main {
+	width: var(--main-width);
+	max-width: var(--max-width);
+	margin: 0 auto;
+}
+
+.main_banner {
+	width: 100%;
+	height: auto;
+}
+
+.main_form {
+	width: 100%;
+	height: auto;
+}
+
+.form {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	gap: var(--gap);
+	width: 100%;
+	height: auto;
+	padding: 0 var(--padding);
+}
+
+.form label {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	width: 100%;
+	height: auto;
+}
+
+.form label span {
+	font-size: var(--font-h3);
+}
+
+.form input,
+.form select {
+	width: 100%;
+	height: 4rem;
+	margin-top: 1rem;
+	padding: 0 var(--padding);
+	color: var(--main-color);
+	background-color: var(--background-hover);
+	border: none;
+}
+
+.form select {
+	padding: 0 var(--padding);
+	font-size: var(--font-text);
+}
+
+.form textarea {
+	width: 100%;
+	min-height: 8rem;
+	margin-top: 1rem;
+	padding: var(--padding);
+	color: var(--main-color);
+	font-size: var(--font-text);
+	background-color: var(--background-hover);
+	border: none;
+}
+
+.form .form_submit {
+	font-size: var(--font-text);
+	background: none;
+	border: solid 0.1rem var(--main-color);
+	cursor: pointer;
+}
+
+.form .form_submit:hover {
+	background: var(--background-hover);
+}
+
+.form_response {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 6rem;
+	margin-top: var(--margin);
+	padding: var(--padding);
+}
