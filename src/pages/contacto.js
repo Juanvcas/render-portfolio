@@ -56,6 +56,19 @@ export default function Contact() {
 		<>
 			<Head>
 				<title>Contacto</title>
+				<meta name={'title'} content={'Contacto'} />
+				<meta
+					name={'description'}
+					content={
+						'Contacto para resolución de dudas y programación de proyectos. Imágenes, videos, recorridos 360 y modelado 3D.'
+					}
+				/>
+				<meta
+					name={'keywords'}
+					content={
+						'soluciones, render, renderización, modelado 3d, arquitectura, mobiliario, arte, contacto'
+					}
+				/>
 			</Head>
 			<main className={s.main}>
 				<section className={s.main_banner}>
@@ -77,11 +90,11 @@ export default function Contact() {
 						onSubmit={(e) => submit(e)}
 					>
 						<label>
-							<span>Nombre:</span>
+							<span>Nombre: *</span>
 							<input id={'name'} type={'text'} name={'name'} required />
 						</label>
 						<label>
-							<span>Email:</span>
+							<span>Email: *</span>
 							<input id={'email'} type={'email'} name={'email'} required />
 						</label>
 						<label>
@@ -107,7 +120,7 @@ export default function Contact() {
 							</select>
 						</label>
 						<label>
-							<span>Mensaje:</span>
+							<span>Mensaje: *</span>
 							<textarea
 								id={'message'}
 								name={'message'}

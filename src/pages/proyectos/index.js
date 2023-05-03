@@ -57,6 +57,19 @@ export default function Projects() {
 		<>
 			<Head>
 				<title>Proyectos</title>
+				<meta name={'title'} content={'Proyectos'} />
+				<meta
+					name={'description'}
+					content={
+						'Proyectos de arquitectura, mobiliario y arte completados que satisficieron al cliente. Imágenes, videos, recorridos 360 y modelado 3D.'
+					}
+				/>
+				<meta
+					name={'keywords'}
+					content={
+						'soluciones, render, renderización, modelado 3d, arquitectura, mobiliario, arte, proyectos'
+					}
+				/>
 			</Head>
 			<main className={s.main}>
 				<section className={s.main_banner}>

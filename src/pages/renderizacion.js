@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
-import { useFetch } from '@/hooks/useFetch';
+import { useEffect, useState } from 'react';
+import { useFilter } from '@/hooks/useFilter';
 import { endpoints } from '@/services/api/endpoints';
 import { MainBanner } from '@/components/MainBanner';
 import { ProjectSlide } from '@/components/ProjectSlide';
@@ -10,11 +10,35 @@ import s from '@/styles/pages/Solutions.module.css';
 
 export default function Rendering() {
 	const [projects, setProjects] = useState([]);
-	useFetch(endpoints.projects.getAllProjects, setProjects);
+	const [category, setCategory] = useState();
+	const [type, setType] = useState();
+	useFilter(
+		endpoints.projects.filterProject(JSON.stringify({ category, type })),
+		setProjects,
+		category,
+		type
+	);
+	useEffect(() => {
+		setCategory('Renderización');
+		setType('false');
+	}, []);
 	return (
 		<>
 			<Head>
 				<title>Renderización</title>
+				<meta name={'title'} content={'Renderización'} />
+				<meta
+					name={'description'}
+					content={
+						'Soluciones en renderización de proyectos de arquitectura, mobiliario y arte 3D para tu empresa y marca personal. Imágenes e imágenes 360.'
+					}
+				/>
+				<meta
+					name={'keywords'}
+					content={
+						'soluciones, render, renderización, imagen, imágenes, arquitectura, mobiliario, arte'
+					}
+				/>
 			</Head>
 			<main className={s.main}>
 				<section className={s.main_banner}>
@@ -106,7 +130,7 @@ export default function Rendering() {
 					</div>
 					<div className={s.projects_list}>
 						{projects.length
-							? projects?.slice(0, 2).map((project) => (
+							? projects?.slice(0, 3).map((project) => (
 									<ProjectSlide
 										key={project.id}
 										link={`/proyectos/${project.id}`}

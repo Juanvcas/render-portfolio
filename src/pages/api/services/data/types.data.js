@@ -7,7 +7,7 @@ export const types = [
 	{
 		id: 2,
 		title: 'Mobiliario',
-		tags: ['mueble', 'muebles'],
+		tags: ['mueble', 'muebles', 'producto', 'productos'],
 	},
 	{
 		id: 3,

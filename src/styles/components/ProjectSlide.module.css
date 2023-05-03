@@ -11,6 +11,10 @@
 	aspect-ratio: 1;
 }
 
+.main:hover .image img {
+	filter: brightness(0.4);
+}
+
 .main h3 {
 	width: 90%;
 	padding-left: var(--padding);

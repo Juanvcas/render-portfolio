@@ -10,6 +10,10 @@
 	text-decoration: none;
 }
 
+.main:hover .image img {
+	filter: brightness(0.4);
+}
+
 .main h2 {
 	width: 90%;
 	text-align: center;

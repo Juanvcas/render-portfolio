@@ -7,7 +7,7 @@ export const ContactBanner = () => {
 		<div className={s.main}>
 			<h2>CONTACTO</h2>
 			<p>Escríbeme para mas información y resolver todas tus dudas</p>
-			<LinkButton href={'/'} text={'Ir al Link'} style={s.link} />
+			<LinkButton href={'/contacto'} text={'Ir al Link'} style={s.link} />
 			<figure className={s.main_image}>
 				<Image
 					src={'https://i.postimg.cc/xCH6JmrW/SS02-01.jpg'}

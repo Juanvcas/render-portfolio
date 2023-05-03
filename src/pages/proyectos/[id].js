@@ -21,6 +21,17 @@ export default function Project() {
 		<>
 			<Head>
 				<title>{project.title}</title>
+				<meta name={'title'} content={project.title} />
+				<meta
+					name={'description'}
+					content={`Proyecto de ${project?.type.title}. Imágenes, videos, recorridos 360 y modelado 3D.`}
+				/>
+				<meta
+					name={'keywords'}
+					content={
+						'soluciones, render, renderización, modelado 3d, arquitectura, mobiliario, arte, proyecto'
+					}
+				/>
 			</Head>
 			<main className={s.main}>
 				<section className={s.main_banner}>

@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
-import { useFetch } from '@/hooks/useFetch';
+import { useEffect, useState } from 'react';
+import { useFilter } from '@/hooks/useFilter';
 import { endpoints } from '@/services/api/endpoints';
 import { MainBanner } from '@/components/MainBanner';
 import { ProjectSlide } from '@/components/ProjectSlide';
@@ -10,11 +10,35 @@ import s from '@/styles/pages/Solutions.module.css';
 
 export default function Modeling() {
 	const [projects, setProjects] = useState([]);
-	useFetch(endpoints.projects.getAllProjects, setProjects);
+	const [category, setCategory] = useState();
+	const [type, setType] = useState();
+	useFilter(
+		endpoints.projects.filterProject(JSON.stringify({ category, type })),
+		setProjects,
+		category,
+		type
+	);
+	useEffect(() => {
+		setCategory('Modelado 3D');
+		setType('false');
+	}, []);
 	return (
 		<>
 			<Head>
 				<title>Modelado 3D</title>
+				<meta name={'title'} content={'Modelado 3D'} />
+				<meta
+					name={'description'}
+					content={
+						'Soluciones en modelado 3D de proyectos de arquitectura y mobiliario. modelos 3D, modelos técnicos y BIM.'
+					}
+				/>
+				<meta
+					name={'keywords'}
+					content={
+						'soluciones, modelado 3d, modelos técnicos, modelado BIM, BIM, arquitectura, mobiliario, arte'
+					}
+				/>
 			</Head>
 			<main className={s.main}>
 				<section className={s.main_banner}>
@@ -100,7 +124,7 @@ export default function Modeling() {
 					</div>
 					<div className={s.projects_list}>
 						{projects.length
-							? projects?.slice(0, 2).map((project) => (
+							? projects?.slice(0, 3).map((project) => (
 									<ProjectSlide
 										key={project.id}
 										link={`/proyectos/${project.id}`}

@@ -16,7 +16,23 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>Juan Vasquez | Inicio</title>
+				<title>Juan Vasquez | Renderización y modelado 3D</title>
+				<meta
+					name={'title'}
+					content={'Juan Vasquez | Renderización y modelado 3D'}
+				/>
+				<meta
+					name={'description'}
+					content={
+						'Soluciones en renderización y modelado 3D de proyectos de arquitectura y mobiliario para tu empresa y marca personal. Imágenes, videos, recorridos 360 y modelado 3D.'
+					}
+				/>
+				<meta
+					name={'keywords'}
+					content={
+						'soluciones, render, renderización, modelado 3d, arquitectura, mobiliario, arte'
+					}
+				/>
 			</Head>
 			<main className={s.main}>
 				<section className={s.main_banner}>
@@ -74,7 +90,7 @@ export default function Home() {
 					</div>
 					<div className={s.projects_list}>
 						{projects.length
-							? projects.slice(0, 5).map((project) => (
+							? projects.slice(0, 6).map((project) => (
 									<ProjectSlide
 										key={project.id}
 										link={`/proyectos/${project.id}`}

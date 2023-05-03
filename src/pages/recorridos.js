@@ -1,25 +1,49 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { useState } from 'react';
-import { useFetch } from '@/hooks/useFetch';
+import { useEffect, useState } from 'react';
 import { endpoints } from '@/services/api/endpoints';
 import { MainBanner } from '@/components/MainBanner';
 import { ProjectSlide } from '@/components/ProjectSlide';
 import { ContactBanner } from '@/components/global/ContactBanner';
 import s from '@/styles/pages/Solutions.module.css';
+import { useFilter } from '@/hooks/useFilter';
 
 export default function Walkthrough() {
 	const [projects, setProjects] = useState([]);
-	useFetch(endpoints.projects.getAllProjects, setProjects);
+	const [category, setCategory] = useState();
+	const [type, setType] = useState();
+	useFilter(
+		endpoints.projects.filterProject(JSON.stringify({ category, type })),
+		setProjects,
+		category,
+		type
+	);
+	useEffect(() => {
+		setCategory('Recorridos');
+		setType('false');
+	}, []);
 	return (
 		<>
 			<Head>
-				<title>Recorridos</title>
+				<title>Recorridos 3D</title>
+				<meta name={'title'} content={'Recorridos 3D'} />
+				<meta
+					name={'description'}
+					content={
+						'Soluciones en renderización de videos y recorridos 360 para proyectos de arquitectura y mobiliario para tu empresa y marca personal. Videos y recorridos 360'
+					}
+				/>
+				<meta
+					name={'keywords'}
+					content={
+						'soluciones, render, renderización, video, videos, recorridos, arquitectura, mobiliario, arte'
+					}
+				/>
 			</Head>
 			<main className={s.main}>
 				<section className={s.main_banner}>
 					<MainBanner
-						title={'RECORRIDOS'}
+						title={'RECORRIDOS 3D'}
 						subtitle={'Videos y recorridos 360 para Arquitectura y Diseño'}
 						image={{
 							src: 'https://i.postimg.cc/pdDx2R7d/Enscape_2020-08-07-14-16-46.jpg',
@@ -101,7 +125,7 @@ export default function Walkthrough() {
 					</div>
 					<div className={s.projects_list}>
 						{projects.length
-							? projects?.slice(0, 2).map((project) => (
+							? projects?.slice(0, 3).map((project) => (
 									<ProjectSlide
 										key={project.id}
 										link={`/proyectos/${project.id}`}
