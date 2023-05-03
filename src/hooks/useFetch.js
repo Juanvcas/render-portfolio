@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const useFetch = (API, setState, render = null) => {
+export const useFetch = (API, setState, render, setBack) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			const res = await fetch(API);
@@ -9,6 +9,10 @@ export const useFetch = (API, setState, render = null) => {
 				setState(data);
 			} else {
 				return data;
+			}
+
+			if (setBack) {
+				setBack(data);
 			}
 		};
 		fetchData();

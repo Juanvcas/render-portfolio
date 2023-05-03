@@ -53,7 +53,7 @@ export class ProjectsService {
 
 	async filter(query) {
 		const { category, type } = JSON.parse(query);
-		if (category && type !== 'false') {
+		if (category !== 'false' && type !== 'false') {
 			console.log(typeof type);
 			const result = this.projects.filter(
 				(project) =>

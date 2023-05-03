@@ -9,7 +9,7 @@
 }
 
 .main h1 {
-	width: 80%;
+	width: 50%;
 	padding-left: var(--padding);
 	font-size: var(--font-h1);
 	line-height: var(--font-h1);
@@ -19,7 +19,7 @@
 	width: 80%;
 	padding-left: var(--padding);
 	font-family: var(--font-sec);
-	font-size: var(--font-text);
+	font-size: var(--font-h3);
 	font-weight: 400;
 	font-style: italic;
 }
@@ -33,4 +33,16 @@
 
 .image img {
 	filter: brightness(0.7);
+}
+
+@media (min-width: 768px) {
+	.main {
+		height: 36rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.main {
+		height: 48rem;
+	}
 }

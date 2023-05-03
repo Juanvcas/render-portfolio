@@ -21,10 +21,22 @@
 
 .main h2,
 .main p {
-	padding-left: var(--padding);
+	padding: 0 var(--padding);
 }
 
 .link {
 	width: 90%;
 	margin-left: var(--padding);
+}
+
+@media (min-width: 768px) {
+	.main {
+		height: 24rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.main {
+		height: 28rem;
+	}
 }

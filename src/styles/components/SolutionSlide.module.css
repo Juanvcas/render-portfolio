@@ -19,6 +19,7 @@
 
 .main h3 {
 	width: 90%;
+	/* margin-top: var(--text-margin); */
 	text-align: center;
 	font-family: var(--font-sec);
 	font-size: var(--font-text);
@@ -35,4 +36,16 @@
 
 .image img {
 	filter: brightness(0.7);
+}
+
+@media (min-width: 768px) {
+	.main {
+		height: auto;
+		aspect-ratio: 1;
+	}
+
+	.main h2 {
+		font-size: var(--font-h3);
+		line-height: var(--font-h3);
+	}
 }

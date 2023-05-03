@@ -12,3 +12,13 @@
 	text-decoration: none;
 	border: solid 0.2rem var(--main-color);
 }
+
+.LinkButton:hover {
+	background-color: var(--background-hover);
+}
+
+@media (min-width: 1024px) {
+	.LinkButton {
+		height: 6rem;
+	}
+}

@@ -1,6 +1,7 @@
 .main {
 	width: 100%;
 	height: auto;
+	margin-bottom: var(--margin);
 }
 
 .main_footer,
@@ -26,6 +27,7 @@
 .footer_menu a,
 .main_credits a {
 	color: var(--main-color);
+	font-size: var(--font-text);
 	text-decoration: none;
 }
 
@@ -39,8 +41,8 @@
 	align-items: flex-start;
 }
 
-.main_credits p {
-	margin-bottom: 1rem;
+.main_credits p:nth-child(2) {
+	margin-top: var(--text-margin);
 }
 
 .separator {

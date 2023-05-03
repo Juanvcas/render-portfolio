@@ -32,7 +32,10 @@ export const Footer = () => {
 			<span className={`${s.separator} separator`}></span>
 			<section className={s.main_credits}>
 				<p>
-					Hecho por: <Link href={'https://juanvcas.com'}>Juan Vasquez</Link>
+					Hecho por:{' '}
+					<Link href={'https://juanvcas.com'} target={'_blank'}>
+						Juan Vasquez
+					</Link>
 				</p>
 				<p>Copyright © 2023 Juan Vasquez Todos los derechos reservados</p>
 			</section>

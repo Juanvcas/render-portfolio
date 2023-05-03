@@ -22,7 +22,7 @@
 .solutions_text {
 	width: 100%;
 	height: auto;
-	padding: 0 5%;
+	padding: 0 var(--padding);
 }
 
 .solutions_text h3 {
@@ -47,7 +47,7 @@
 .projects_text {
 	width: 100%;
 	height: auto;
-	padding: 0 5%;
+	padding: 0 var(--padding);
 }
 
 .projects_text h3 {
@@ -61,4 +61,14 @@
 	grid-template-rows: auto;
 	gap: var(--gap);
 	margin-top: var(--margin);
+}
+
+@media (min-width: 768px) {
+	.solutions_slides {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.projects_list {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }

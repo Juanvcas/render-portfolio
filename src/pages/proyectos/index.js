@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useFetch } from '@/hooks/useFetch';
 import { useSearch } from '@/hooks/useSearch';
 import { useFilter } from '@/hooks/useFilter';
@@ -10,12 +10,12 @@ import s from '@/styles/pages/Projects.module.css';
 
 export default function Projects() {
 	const [projects, setProjects] = useState([]);
-	const [back, setBack] = useState([]);
+	const [back, setBack] = useState();
 
 	const [categories, setCategories] = useState([]);
 	const [types, setTypes] = useState([]);
 
-	useFetch(endpoints.projects.getAllProjects, setProjects);
+	useFetch(endpoints.projects.getAllProjects, setProjects, null, setBack);
 	useFetch(endpoints.categories.getAllCategories, setCategories);
 	useFetch(endpoints.types.getAllTypes, setTypes);
 
@@ -37,16 +37,6 @@ export default function Projects() {
 		setType(typeInput.current.value);
 	};
 
-	const clear = () => {
-		const cat = document.querySelector('#categoryInput');
-		const tp = document.querySelector('#typeInput');
-		const fd = document.querySelector('#search');
-		cat.value = 'false';
-		tp.value = 'false';
-		fd.value = '';
-		setTimeout(() => setProjects(back), 100);
-	};
-
 	const [query, setQuery] = useState();
 	const queryInput = useRef();
 
@@ -56,9 +46,12 @@ export default function Projects() {
 		setQuery(queryInput.current.value);
 	};
 
-	useEffect(() => {
-		setBack(projects);
-	}, []);
+	const clear = () => {
+		categoryInput.current.value = 'false';
+		typeInput.current.value = 'false';
+		queryInput.current.value = '';
+		setProjects(back);
+	};
 
 	return (
 		<>

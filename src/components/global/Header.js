@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { FiAlignJustify, FiChevronDown } from 'react-icons/fi';
 import s from '@/styles/components/global/Header.module.css';
 import { useEffect, useState } from 'react';
@@ -6,6 +7,9 @@ import { useEffect, useState } from 'react';
 export const Header = () => {
 	const [menu, setMenu] = useState(false);
 	const [submenu, setSubmenu] = useState(false);
+	const [menuLogo, setMenuLogo] = useState(true);
+
+	const router = useRouter();
 
 	useEffect(() => {
 		const header = document.querySelector('header');
@@ -25,8 +29,12 @@ export const Header = () => {
 
 	useEffect(() => {
 		const setMenus = () => {
-			setMenu(false);
-			setSubmenu(false);
+			if (window.innerWidth < 1024) {
+				setMenu(false);
+				setSubmenu(false);
+			} else {
+				setSubmenu(false);
+			}
 		};
 
 		document.body.addEventListener('click', setMenus);
@@ -34,10 +42,48 @@ export const Header = () => {
 		return () => document.body.removeEventListener('click', setMenus);
 	}, []);
 
+	useEffect(() => {
+		if (window.innerWidth >= 1024) {
+			setMenuLogo(false);
+			setMenu(true);
+			setSubmenu(false);
+		}
+
+		const resize = () => {
+			if (window.innerWidth >= 1024) {
+				setMenuLogo(false);
+				setMenu(true);
+				setSubmenu(false);
+			} else {
+				setMenuLogo(true);
+				setMenu(false);
+				setSubmenu(false);
+			}
+		};
+
+		window.addEventListener('resize', resize);
+
+		return () => window.removeEventListener('resize', resize);
+	}, []);
+
+	useEffect(() => {
+		router.events.on('routeChangeComplete', () => {
+			if (window.innerWidth < 1024) {
+				setMenu(false);
+				setSubmenu(false);
+			} else {
+				setSubmenu(false);
+			}
+		});
+	}, [router]);
+
 	return (
 		<header
 			className={s.main}
-			style={{ backgroundColor: menu ? 'var(--background)' : null }}
+			style={{
+				backgroundColor:
+					(menu && menuLogo) || submenu ? 'var(--background)' : null,
+			}}
 			onClick={(e) => e.stopPropagation()}
 		>
 			<div className={s['main-cont']}>
@@ -79,9 +125,11 @@ export const Header = () => {
 							</li>
 						</ul>
 					) : null}
-					<span className={s.menu_logo} onClick={() => setMenu(!menu)}>
-						<FiAlignJustify />
-					</span>
+					{menuLogo ? (
+						<span className={s.menu_logo} onClick={() => setMenu(!menu)}>
+							<FiAlignJustify />
+						</span>
+					) : null}
 				</menu>
 			</div>
 		</header>

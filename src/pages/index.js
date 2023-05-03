@@ -59,9 +59,7 @@ export default function Home() {
 						<SolutionSlide
 							link={'/modelado'}
 							title={'MODELADO 3D'}
-							text={
-								'Modelado completo del proyecto y diseño mobiliario en multiples herramientas'
-							}
+							text={'Modelado arquitectónico, diseño mobiliario y arte 3D'}
 							image={{
 								src: 'https://i.postimg.cc/X7fYjKCW/0002.jpg',
 								alt: 'Imagen de un modelo 3D de una cabaña hecho en Blender',

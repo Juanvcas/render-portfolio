@@ -7,9 +7,10 @@ export const useFilter = (API, setState, category, type, back) => {
 				const res = await fetch(API);
 				const data = await res.json();
 				if (data) {
-					setState(data);
 					if (category == 'false' && type == 'false') {
 						setState(back);
+					} else {
+						setState(data);
 					}
 				}
 			};

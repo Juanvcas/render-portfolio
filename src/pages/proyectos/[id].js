@@ -86,13 +86,13 @@ export default function Project() {
 					<h2>TECNOLOGÍAS</h2>
 					<div className={s['text-cont']}>
 						<div className={s.tech_text}>
-							<h3>Modelado:</h3>
+							<h3>MODELADO:</h3>
 							{project.technologies.model.map((text, index) => (
 								<p key={index}>{text.title}</p>
 							))}
 						</div>
 						<div className={s.tech_text}>
-							<h3>Render:</h3>
+							<h3>RENDER:</h3>
 							{project.technologies.render.map((text, index) => (
 								<p key={index}>{text.title}</p>
 							))}
