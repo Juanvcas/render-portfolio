@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import { useFetch } from '@/hooks/useFetch';
 import { endpoints } from '@/services/api/endpoints';
 import { MainBanner } from '@/components/MainBanner';
-import s from '@/styles/pages/Project.module.css';
 import { ImageSlider } from '@/components/ImageSlider';
+import { Video } from '@/components/global/Video';
+import s from '@/styles/pages/Project.module.css';
+import { Viewer360 } from '@/components/global/Viewer360';
 
 export default function Project() {
 	const router = useRouter();
@@ -61,24 +63,7 @@ export default function Project() {
 						<section className={s.main_video}>
 							<h2>RECORRIDO</h2>
 							<div className={s['video-cont']}>
-								{/* <video width={'100%'} height={'auto'} controls>
-									{project.video.map((vid) => {
-										<source src={vid.src} type={vid.type} />;
-									})}
-								</video> */}
-								<iframe
-									src={project.video[0].src}
-									width='100%'
-									height='auto'
-								></iframe>
-								{/* <iframe
-									src={project.video[0].src}
-									width='100%'
-									height='auto'
-									frameBorder='0'
-									scrolling='no'
-									allowFullScreen
-								></iframe> */}
+								<Video url={project.video[0].src} />
 							</div>
 						</section>
 					</>
@@ -88,7 +73,9 @@ export default function Project() {
 						<span className='separator'></span>
 						<section className={s.main_walk}>
 							<h2>RECORRIDO 360</h2>
-							<div className={s['walk-cont']}></div>
+							<div className={s['walk-cont']}>
+								<Viewer360 images={project.walkthrough} />
+							</div>
 						</section>
 					</>
 				) : null}

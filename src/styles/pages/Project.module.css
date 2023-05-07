@@ -40,6 +40,10 @@
 	margin-top: var(--text-margin);
 }
 
+.walk-cont > div {
+	height: 24rem;
+}
+
 .main_tech {
 	width: 100%;
 	height: auto;
@@ -76,4 +80,24 @@
 	border-left: solid 0.1rem var(--main-color);
 	border-right: solid 0.1rem var(--main-color);
 	filter: brightness(0.7);
+}
+
+@media (min-width: 768px) {
+	.video-cont iframe {
+		height: 36rem;
+	}
+
+	.walk-cont > div {
+		height: 36rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.video-cont iframe {
+		height: 48rem;
+	}
+
+	.walk-cont > div {
+		height: 48rem;
+	}
 }

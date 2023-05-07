@@ -1,6 +1,7 @@
 import { categories } from './categories.data';
 import { types } from './types.data';
 import { technologies, engines } from './technologies.data';
+import { walkthroughs } from './content/walkthroughs.data';
 
 export const projects = [
 	{
@@ -114,7 +115,7 @@ export const projects = [
 		],
 		video: [
 			{
-				src: 'https://drive.google.com/file/d/1YxhRQLnZHmHicRAjleukd8FZFawz6ufP/preview',
+				src: 'https://www.youtube.com/embed/dCANhODIhZg',
 				type: 'video/mp4',
 			},
 		],
@@ -122,7 +123,7 @@ export const projects = [
 	{
 		id: 'casa-bello',
 		type: types[0],
-		categories: [categories[0], categories[2]],
+		categories: [categories[0], categories[1], categories[2]],
 		technologies: {
 			model: [technologies[1]],
 			render: [engines[1]],
@@ -181,6 +182,7 @@ export const projects = [
 				alt: 'Casa de campo de un nivel en concreto y ladrillo con grandes ventanas y mucha vegetación de noche',
 			},
 		],
+		walkthrough: walkthroughs.casa_bello,
 	},
 	{
 		id: 'casa-la-ceja',
@@ -447,7 +449,7 @@ export const projects = [
 		],
 		video: [
 			{
-				src: 'https://drive.google.com/file/d/1m1w06i8erj1pLB3E6ZJ82iyzt3yGJ9RI/preview',
+				src: 'https://www.youtube.com/embed/xSZcdTp5AoM',
 				type: 'video/mp4',
 			},
 		],
